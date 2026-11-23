@@ -6,10 +6,12 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 
 // A — coffee. The whole answer, clean and unmistakable: the letter that
 // lands as the fuller, more alive choice in the coffee-against-tea argument.
+// Only "A" (coffee) and "B" (tea) are legal letters; anything else is not
+// an answer to the question at all.
 const LETTER = "A";
 
-if (LETTER.length !== 1 || /\s/.test(LETTER)) {
-  throw new Error("entry must be exactly one non-whitespace character");
+if (LETTER !== "A" && LETTER !== "B") {
+  throw new Error(`entry must be "A" (coffee) or "B" (tea), got ${JSON.stringify(LETTER)}`);
 }
 
 mkdirSync("/output", { recursive: true });
